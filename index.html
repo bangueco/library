@@ -3,9 +3,44 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Library</title>
+
+  <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 <body>
-  
+  <header>
+    <div class="container">
+      <h1>Library</h1>
+    </div>
+  </header>
+  <main class="container">
+    <form action="">
+      <div class="row justify-content-center">
+        <div class="col-sm-3 form-group p-2">
+          <label for="book_title">Title</label>
+          <input class="form-control" type="text" name="book_title" id="book_title">
+        </div>
+        <div class="col-sm-3 form-group p-2">
+          <label for="book_author">Author</label>
+          <input class="form-control" type="text" name="book_author" id="book_author">
+        </div>
+        <div class="col-sm-2 form-group p-2">
+          <label for="book_pages">Pages</label>
+          <input class="form-control" type="number" name="book_pages" id="book_pages">
+        </div>
+        <div class="col-sm-2 form-group p-2">
+          <label for="book_status">Status</label>
+          <select class="form-control" name="book_status" id="book_status">
+            <option value="not read">Not Read</option>
+            <option value="read">Read</option>
+          </select>
+        </div>
+        <div class="col-sm-1 align-self-end p-2">
+            <button class="btn btn-success">Submit</button>
+        </div>
+      </div>
+    </form>
+  </main>
 </body>
 </html>

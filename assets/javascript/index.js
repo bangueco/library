@@ -1,11 +1,37 @@
 // Books will be stored here in array
 
 let library = [
-  {title: 'Naruto Shippuden', author: 'Masashi Kishimoto', pages: 700, status: 'Not Read'}
+  {title: 'Naruto Shippuden', author: 'Masashi Kishimoto', pages: 700, status: 'Not Read'},
+  {title: 'Berserk', author: 'Ban Gueco', pages: 666, status: 'Not Read'},
+  {title: 'One Piece', author: 'Oda?', pages: 2000, status: 'Not Read'}
 ]
+
+// Object constructor for books
+
+function Book(title, author, pages, status) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.status = status;
+}
+
+const addBook = document.querySelector('.add-book').addEventListener('click', function addBookToLibrary(e) {
+  // Query selectors to get input values
+  const bookTitle = document.querySelector('#book_title').value;
+  const bookAuthor = document.querySelector('#book_author').value;
+  const bookPages = document.querySelector('#book_pages').value;
+  const bookStatus = document.querySelector("#book_status").value;
+
+  library.push(new Book(bookTitle, bookAuthor, parseInt(bookPages), bookStatus));
+  updateTable();
+  e.preventDefault();
+})
+
+// Update/Add table items from array
 
 const updateTable = function() {
   const booksInfoTable = document.querySelector('.books_table');
+  document.querySelector('.books_table').innerHTML = "" // Avoid html element duplications
   library.forEach(book => {
     // Create elements
     const tableRow = document.createElement('tr');
@@ -33,10 +59,11 @@ const updateTable = function() {
     // Class related
     actionDelete.classList.add('btn');
     actionDelete.classList.add('btn-danger');
+    actionDelete.classList.add('delete-btn');
     actionDelete.classList.add('w-100');
   })
-}
+};
 
 window.onload = function() {
   updateTable();
-}
+};

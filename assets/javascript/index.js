@@ -15,18 +15,6 @@ function Book(title, author, pages, status) {
   this.status = status;
 }
 
-const addBook = document.querySelector('.add-book').addEventListener('click', function addBookToLibrary(e) {
-  // Query selectors to get input values
-  const bookTitle = document.querySelector('#book_title').value;
-  const bookAuthor = document.querySelector('#book_author').value;
-  const bookPages = document.querySelector('#book_pages').value;
-  const bookStatus = document.querySelector("#book_status").value;
-
-  library.push(new Book(bookTitle, bookAuthor, parseInt(bookPages), bookStatus));
-  updateTable();
-  e.preventDefault();
-})
-
 // Update/Add table items from array
 
 const updateTable = function() {
@@ -67,5 +55,27 @@ const updateTable = function() {
 };
 
 window.onload = function() {
+  // Show list of books based on array list
   updateTable();
+
+  // Add book to array list
+  document.querySelector('.add-book').addEventListener('click', function addBookToLibrary(e) {
+  // Query selectors to get input values
+  const bookTitle = document.querySelector('#book_title').value;
+  const bookAuthor = document.querySelector('#book_author').value;
+  const bookPages = document.querySelector('#book_pages').value;
+  const bookStatus = document.querySelector("#book_status").value;
+
+  library.push(new Book(bookTitle, bookAuthor, parseInt(bookPages), bookStatus));
+  updateTable();
+  e.preventDefault();
+  });
+
+  // Delete book from array list
+  document.querySelectorAll('.delete-btn').forEach(book => {
+    book.addEventListener('click', (e) => {
+      library.splice(e.target.dataset, 1);
+      updateTable();
+    })
+  })
 };

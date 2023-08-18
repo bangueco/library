@@ -61,6 +61,8 @@ const updateTable = function() {
     actionDelete.classList.add('btn-danger');
     actionDelete.classList.add('delete-btn');
     actionDelete.classList.add('w-100');
+    // Attribute related
+    actionDelete.setAttribute('data-book-id', 0);
   })
 };
 

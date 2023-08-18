@@ -20,6 +20,7 @@ function Book(title, author, pages, status) {
 const updateTable = function() {
   const booksInfoTable = document.querySelector('.books_table');
   document.querySelector('.books_table').innerHTML = "" // Avoid html element duplications
+  let bookId = 0;
   library.forEach(book => {
     // Create elements
     const tableRow = document.createElement('tr');
@@ -50,7 +51,8 @@ const updateTable = function() {
     actionDelete.classList.add('delete-btn');
     actionDelete.classList.add('w-100');
     // Attribute related
-    actionDelete.setAttribute('data-book-id', 0);
+    tableRow.setAttribute('data-book-id', bookId);
+    bookId++;
   })
 };
 
@@ -74,8 +76,7 @@ window.onload = function() {
   // Delete book from array list
   document.querySelectorAll('.delete-btn').forEach(book => {
     book.addEventListener('click', (e) => {
-      library.splice(e.target.dataset, 1);
-      updateTable();
+      console.log(e)
     })
   })
 };

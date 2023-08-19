@@ -67,6 +67,16 @@ const updateTable = function() {
     // Attribute related
     tableRow.setAttribute('data-book-id', bookID);
     bookID++;
+    // Toggle book status
+    bookStatus.addEventListener('click', function(e) {
+      if (library[e.target.parentNode.dataset.bookId].status === 'Not Read') {
+        library[e.target.parentNode.dataset.bookId].status = 'Read';
+        updateTable();
+      } else {
+        library[e.target.parentNode.dataset.bookId].status = 'Not Read';
+        updateTable();
+      }
+    })
     // Delete button for books event listener
     actionDelete.addEventListener('click', function(e) {
       library.splice(e.target.parentNode.parentNode.dataset.bookId, 1);

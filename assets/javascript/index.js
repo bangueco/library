@@ -19,12 +19,17 @@ function Book(title, author, pages, status) {
 document.querySelector('.add-book').addEventListener('click', function addBookToLibrary(e)
 {
   // Query selectors to get input values
-  const bookTitle = document.querySelector('#book_title').value;
-  const bookAuthor = document.querySelector('#book_author').value;
-  const bookPages = document.querySelector('#book_pages').value;
-  const bookStatus = document.querySelector("#book_status").value;
+  const bookTitle = document.querySelector('#book_title');
+  const bookAuthor = document.querySelector('#book_author');
+  const bookPages = document.querySelector('#book_pages');
+  const bookStatus = document.querySelector("#book_status");
 
-  library.push(new Book(bookTitle, bookAuthor, parseInt(bookPages), bookStatus));
+  if (bookTitle.validity.valueMissing == true || bookAuthor.validity.valueMissing == true
+    || bookPages.validity.valueMissing == true || bookPages.validity.badInput == true || bookStatus.validity.valueMissing == true) {
+    return;
+  }
+
+  library.push(new Book(bookTitle.value, bookAuthor.value, parseInt(bookPages.value), bookStatus.value));
   updateTable();
   e.preventDefault();
 });
